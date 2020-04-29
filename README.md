@@ -1,8 +1,9 @@
 # Tic-Tac-Toe
 ## This is a simple tic-tac-toe game built using Python 
+<html>
 <iframe src="https://giphy.com/embed/l1Et6k00qp9fMTP8s" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen>
 </iframe>
-
+</html>
 ### To run this program offline
 using terminal or command prompt 
 - Fork this [repo](https://github.com/swaaz/tic-tac-toe)
