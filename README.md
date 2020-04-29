@@ -18,7 +18,8 @@ cd tic-tac-toe
 ```
 - To run program
 ```
-python3 program.py
+python3 [file_name].py
 ```
 ### To run this program online
-To run code online [click here](https://repl.it/@swaaz/game-tic-tac-toe)
+To run code online  
+- [](https://repl.it/@swaaz/game-tic-tac-toe)
