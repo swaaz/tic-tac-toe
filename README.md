@@ -22,4 +22,5 @@ python3 [file_name].py
 ```
 ### To run this program online
 To run code online  
-- [](https://repl.it/@swaaz/game-tic-tac-toe)
+- [Single Player](https://repl.it/@swaaz/tic-tac-toe-singleplayer)
+- [Multi Player](https://repl.it/@swaaz/tic-tac-toe-multi-player)
