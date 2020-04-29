@@ -1,6 +1,6 @@
 # Tic-Tac-Toe
 ## This is a simple tic-tac-toe game built using Python 
-[![Run on Repl.it](https://repl.it/badge/github/swaaz/tic-tac-toe)](https://repl.it/github/swaaz/tic-tac-toe)
+
 
 ![giphy](https://user-images.githubusercontent.com/42874695/80619476-5f636900-8a62-11ea-9204-c84d15dfb97d.gif)
 
