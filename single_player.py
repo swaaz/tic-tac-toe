@@ -1,4 +1,5 @@
 import random
+import time
 #initialization
 x_count = 0
 o_count = 0
@@ -24,7 +25,6 @@ def count(): #function to count the number of X ,O and _ in the list
         o_count = o_count + 1
     elif x == "_":
         s_count = s_count + 1
-
 def check(): #function to check the winner
   global game_still_on
   if ((list[0] == list[1] == list[2] == "X" or list[3] == list[4] == list[5] == "X" or list[6] == list[7] == list[8] == "X" or list[0] == list[3] == list[6] == "X" or list[1] == list[4] == list[7] == "X" or list[2] == list[5] == list[8] == "X" or list[0] == list[4] == list[8] == "X" or list[2] == list[4] == list[6] == "X") and (list[0] == list[1] == list[2] == "O" or list[3] == list[4] == list[5] == "O" or list[6] == list[7] == list[8] == "O" or list[0] == list[3] == list[6] == "O" or list[1] == list[4] == list[7] == "O" or list[2] == list[5] == list[8] == "O" or list[0] == list[4] == list[8] == "O" or list[2] == list[4] == list[6] == "O")) or ((x_count-o_count) >= 2 or (o_count-x_count) >= 2):
@@ -57,12 +57,10 @@ def get_input(current_player): #function to take the index input
       get_input(current_player)
   else:                        #if current player in O
     index = O_turn()
-    print(index)
     if list[index] != "_" : #checking whether the index is empty
       get_input(current_player)
     else:
       list[index] = current_player 
-
 def switch_player(): #function to switch the player
   global current_player
   if current_player == "X": #if the current player is X then switch to O
@@ -73,15 +71,17 @@ def play_game(): #function which run the game
   display()
   while game_still_on:
     get_input(current_player)
+    time.sleep(1)
     display()
+    time.sleep(1)
     count()
     check()
     switch_player()
 def O_turn():
   count()
-  if o_count == 2:
-    if list[0] == list[1] or list[1] == list[2] or list[0] == list[2]: #checking first row
-        if list[0] == list[1]:
+  if o_count >= 2:  #if two O present in the list 
+    if (list[0] == list[1] != "_" or list[1] == list[2] != "_" or list[0] == list[2] != "_"): #checking first row
+        if list[0] == list[1] :
           if list[2] != "_":
             return random.randint(0,8)
           else:
@@ -96,7 +96,7 @@ def O_turn():
             return random.randint(0,8)
           else:
             return 1
-    elif  list[3] == list[4] or list[4] == list[5] or list[3] == list[5]: #checking second row
+    elif  list[3] == list[4] != "_" or list[4] == list[5] != "_" or list[3] == list[5] != "_": #checking second row
         if list[3] == list[4]:
           if list[5] != "_":
             return random.randint(0,8)
@@ -112,7 +112,7 @@ def O_turn():
             return random.randint(0,8)
           else:
             return 4
-    elif list[6] == list[7] or list[7] == list[8] or list[6] == list[8]: #checking thrid row
+    elif list[6] == list[7] != "_" or list[7] == list[8] != "_" or list[6] == list[8] != "_": #checking thrid row
         if list[6] == list[7]:
           if list[8] != "_":
             return random.randint(0,8)
@@ -128,7 +128,7 @@ def O_turn():
             return random.randint(0,8)
           else:
             return 7
-    elif list[0] == list[3] or list[3] == list[6] or list[0] == list[6]: #checking first column
+    elif list[0] == list[3] != "_" or list[3] == list[6] != "_" or list[0] == list[6] != "_": #checking first column
         if list[0] == list[3]:
           if list[6] != "_":
             return random.randint(0,8)
@@ -144,7 +144,7 @@ def O_turn():
             return random.randint(0,8)
           else:
             return 3
-    elif list[1] == list[4] or list[4] == list[7] or list[1] == list[7]: #checking 2nd column
+    elif list[1] == list[4] != "_" or list[4] == list[7] != "_" or list[1] == list[7] != "_": #checking 2nd column
         if list[1] == list[4]:
           if list[7] != "_":
             return random.randint(0,8)
@@ -160,7 +160,7 @@ def O_turn():
             return random.randint(0,8)
           else:
             return 4
-    elif list[2] == list[5] or list[5] == list[8] or list[2] == list[8]: #checking third column
+    elif list[2] == list[5] != "_" or list[5] == list[8] != "_" or list[2] == list[8] != "_": #checking third column
         if list[2] == list[5]:
           if list[8] != "_":
             return random.randint(0,8)
@@ -176,7 +176,7 @@ def O_turn():
             return random.randint(0,8)
           else:
             return 5
-    elif list[0] == list[4] or list[4] == list[8] or list[0] == list[8]: #checking diagonal
+    elif list[0] == list[4] != "_" or list[4] == list[8] != "_" or list[0] == list[8] != "_": #checking diagonal
         if list[0] == list[4]:
           if list[8] != "_":
             return random.randint(0,8)
@@ -192,7 +192,7 @@ def O_turn():
             return random.randint(0,8)
           else:
             return 4
-    elif list[2] == list[4] or list[4] == list[6] or list[2] == list[6]: #checking diagonal
+    elif list[2] == list[4] != "_" or list[4] == list[6] != "_" or list[2] == list[6] != "_": #checking diagonal
         if list[2] == list[4]:
           if list[6] != "_":
             return random.randint(0,8)
@@ -210,9 +210,115 @@ def O_turn():
             return 4
     else:
       return random.randint(0,8)
-  elif o_count == 1 :
-    return random.randint(0,8)
-  else:
+  elif o_count == 1 :   #if one O present in the list
+    if list[0] == "O":    #first index
+        if list[4] == "_":
+          return 4
+        elif list[1] == "_":
+          return 1
+        elif list[3] == "_":
+          return 3
+        else:
+          return random.randint(0,8)
+    elif list[1] == "O":    #second index
+        if list[4] == "_":
+          return 4
+        elif list[0] == "_":
+          return 0
+        elif list[3] == "_":
+          return 3
+        elif list[2] == "_":
+          return 2
+        elif list[5] == "_":
+          return 5
+        else:
+          return random.randint(0,8)
+    elif list[2] == "O":    #third index
+        if list[4] == "_":
+          return 4
+        elif list[1] == "_":
+          return 1
+        elif list[5] == "_":
+          return 5
+        else:
+          return random.randint(0,8)
+    elif list[3] == "O":    #fourth index
+        if list[4] == "_":
+          return 4
+        elif list[0] == "_":
+          return 0
+        elif list[1] == "_":
+          return 1
+        elif list[6] == "_":
+          return 6
+        elif list[7] == "_":
+          return 7
+        else:
+          return random.randint(0,8)
+    elif list[4] == "O":    #fifth index
+        if list[0] == "_":
+          return 0
+        elif list[1] == "_":
+          return 1
+        elif list[2] == "_":
+          return 3
+        elif list[3] == "_":
+          return 3
+        elif list[5] == "_":
+          return 5
+        elif list[6] == "_":
+          return 6
+        elif list[7] == "_":
+          return 7
+        elif list[8] == "_":
+          return 8
+        else:
+          return random.randint(0,8)
+    elif list[5] == "O":    #sixth index
+        if list[4] == "_":
+          return 4
+        elif list[1] == "_":
+          return 1
+        elif list[2] == "_":
+          return 2
+        elif list[7] == "_":
+          return 7
+        elif list[8] == "_":
+          return 8
+        else:
+          return random.randint(0,8)
+    elif list[6] == "O":    #seventh index
+        if list[4] == "_":
+          return 4
+        elif list[3] == "_":
+          return 3
+        elif list[7] == "_":
+          return 7
+        else:
+          return random.randint(0,8)
+    elif list[7] == "O":    #eight index
+        if list[4] == "_":
+          return 4
+        elif list[3] == "_":
+          return 3
+        elif list[5] == "_":
+          return 5
+        elif list[6] == "_":
+          return 6
+        elif list[8] == "_":
+          return 8
+        else:
+          return random.randint(0,8)
+    elif list[8] == "O":    #ninth index
+        if list[4] == "_":
+          return 4
+        elif list[7] == "_":
+          return 7
+        elif list[5] == "_":
+          return 5
+        else:
+          return random.randint(0,8)
+  elif o_count == 0: #if zero O present in list
     return random.randint(0,8)
 
 
