@@ -1,7 +1,6 @@
 # Tic-Tac-Toe
 ## This is a simple tic-tac-toe game built using Python 
 
-
 ![giphy](https://user-images.githubusercontent.com/42874695/80619476-5f636900-8a62-11ea-9204-c84d15dfb97d.gif)
 
 ### To run this program offline
